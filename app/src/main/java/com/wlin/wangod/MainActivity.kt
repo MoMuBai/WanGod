@@ -3,13 +3,19 @@ package com.wlin.wangod
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import com.wlin.wangod.ui.theme.WanGodTheme
 
 class MainActivity : ComponentActivity() {
@@ -31,16 +37,26 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+    Row {
+        Text(
+            text = "$name",
+            modifier = modifier
+        )
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    WanGodTheme {
-        Greeting("Android wlin")
+fun GreetingPreviewHello() {
+    Column {
+        WanGodTheme {
+            Greeting(name = "Account:")
+            Image(
+                painter = painterResource(id = R.drawable.ic_launcher_background),
+                contentDescription = "",
+                modifier = Modifier.size(Dp(40F))
+            )
+            Greeting(name = "Password:")
+        }
     }
 }
