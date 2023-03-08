@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -25,8 +26,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.sp
 import com.wlin.wangod.HomeActivity
 import com.wlin.wangod.R
 import com.wlin.wangod.ui.theme.WanGodTheme
@@ -62,9 +66,11 @@ class SplashActivity : ComponentActivity() {
     @Composable
     private fun Welcome() {
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.DarkGray),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
         ) {
             Image(
                 painter = painterResource(id = R.drawable.ic_launcher_background),
@@ -75,10 +81,18 @@ class SplashActivity : ComponentActivity() {
                     .border(Dp(1f), Color.Red, CircleShape)
             )
             Spacer(modifier = Modifier.size(Dp(12f)))
-            Text(text = "Welcome to wan god", modifier = Modifier.clickable {
-                Toast.makeText(this@SplashActivity, "Enter home screen", Toast.LENGTH_SHORT).show()
-                enterHomeScreen()
-            })
+            Text(
+                text = "Welcome to wan god",
+                modifier = Modifier.clickable {
+                    Toast.makeText(this@SplashActivity, "Enter home screen", Toast.LENGTH_SHORT)
+                        .show()
+                    enterHomeScreen()
+                },
+                color = Color.Yellow,
+                fontSize = 24.sp,
+                fontStyle = FontStyle.Italic,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 }
